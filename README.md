@@ -1,5 +1,8 @@
 # get-favicon
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
+
 [中文文档](README_CN.md)
 
 A favicon proxy service built on Cloudflare Workers. Fetch any website's favicon by domain name.
@@ -62,6 +65,10 @@ npm run dev        # Local development
 npm run deploy     # Deploy to Cloudflare
 npm run typecheck  # Type check
 ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a [Pull Request](https://github.com/lingjistudio/get-favicon/pulls). For major changes, please open an [issue](https://github.com/lingjistudio/get-favicon/issues) first to discuss what you would like to change.
 
 ## License
 

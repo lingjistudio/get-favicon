@@ -1,5 +1,8 @@
 # get-favicon
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
+
 [English](README.md)
 
 基于 Cloudflare Worker 的 Favicon 代理服务，根据域名获取对应网站的 favicon 图标。
@@ -62,6 +65,10 @@ npm run dev        # 本地开发
 npm run deploy     # 部署
 npm run typecheck  # 类型检查
 ```
+
+## 贡献
+
+欢迎贡献！请随时提交 [Pull Request](https://github.com/lingjistudio/get-favicon/pulls)。如需重大变更，请先开 [Issue](https://github.com/lingjistudio/get-favicon/issues) 讨论。
 
 ## 许可证
 
