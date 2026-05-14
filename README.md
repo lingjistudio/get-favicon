@@ -1,45 +1,62 @@
 # get-favicon
 
-基于 Cloudflare Worker 的 Favicon 代理服务，根据域名获取对应网站的 favicon 图标。
+[中文文档](README_CN.md)
 
-## 接口
+A favicon proxy service built on Cloudflare Workers. Fetch any website's favicon by domain name.
+
+## API
 
 ```
 GET https://get-favicon.lingjistudio.com/{domain}
 GET https://get-favicon.lingjistudio.com/?domain={domain}
 ```
 
-### 示例
+### Examples
 
 ```bash
-# 路径参数
-curl https://get-favicon.lingjistudio.com/github.com
+# GitHub
+curl https://get-favicon.lingjistudio.com/github.com -o github.ico
 
-# 查询参数
-curl https://get-favicon.lingjistudio.com/?domain=cloudflare.com
+# Google
+curl https://get-favicon.lingjistudio.com/google.com -o google.ico
+
+# OpenAI
+curl https://get-favicon.lingjistudio.com/openai.com -o openai.ico
 ```
 
-### 响应
+Use in HTML:
 
-- 成功：返回 favicon 图片（ICO/PNG/SVG），`Cache-Control: public, max-age=604800`
-- 失败：返回默认占位 SVG 图标，`Cache-Control: public, max-age=3600`
-- 缺少域名参数：`400 {"error":"Missing or invalid domain parameter"}`
-- 非 GET 请求：`405 {"error":"Method Not Allowed"}`
-
-## 工作原理
-
-```
-请求 → Cache API 命中？→ 直接返回
-     → 获取 https://{domain}/favicon.ico → 成功？→ 透传 + 缓存
-     → 获取 Google S2 兜底 → 成功？→ 透传 + 缓存
-     → 返回默认占位图标（短缓存）
+```html
+<img src="https://get-favicon.lingjistudio.com/github.com" alt="GitHub" />
+<img src="https://get-favicon.lingjistudio.com/google.com" alt="Google" />
+<img src="https://get-favicon.lingjistudio.com/openai.com" alt="OpenAI" />
 ```
 
-## 开发
+### Responses
+
+- **Success**: Returns favicon image (ICO/PNG/SVG), `Cache-Control: public, max-age=604800`
+- **Not found**: Returns default placeholder SVG, `Cache-Control: public, max-age=3600`
+- **Missing domain**: `400 {"error":"Missing or invalid domain parameter"}`
+- **Method not allowed**: `405 {"error":"Method Not Allowed"}`
+
+## How It Works
+
+```
+Request → Cache API hit? → Return cached
+        → Fetch https://{domain}/favicon.ico → Success? → Proxy + cache
+        → Fetch Google S2 fallback → Success? → Proxy + cache
+        → Return default placeholder (short TTL)
+```
+
+## Development
 
 ```bash
 npm install
-npm run dev        # 本地开发
-npm run deploy     # 部署
-npm run typecheck  # 类型检查
+npm run dev        # Local development
+npm run deploy     # Deploy to Cloudflare
+npm run typecheck  # Type check
 ```
+
+## License
+
+[MIT](LICENSE)
