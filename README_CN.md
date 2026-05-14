@@ -26,6 +26,12 @@ curl https://get-favicon.lingjistudio.com/openai.com -o openai.ico
 
 在 HTML 中使用：
 
+| | 域名 | 效果 |
+|---|---|---|
+| GitHub | `github.com` | <img src="https://get-favicon.lingjistudio.com/github.com" width="16" height="16" /> |
+| Google | `google.com` | <img src="https://get-favicon.lingjistudio.com/google.com" width="16" height="16" /> |
+| OpenAI | `openai.com` | <img src="https://get-favicon.lingjistudio.com/openai.com" width="16" height="16" /> |
+
 ```html
 <img src="https://get-favicon.lingjistudio.com/github.com" alt="GitHub" />
 <img src="https://get-favicon.lingjistudio.com/google.com" alt="Google" />
