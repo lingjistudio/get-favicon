@@ -25,7 +25,7 @@ export default {
     const domain = extractDomain(url);
 
     if (!domain) {
-      return json({ error: 'Missing or invalid domain parameter' }, 400);
+      return Response.redirect('https://github.com/lingjistudio/get-favicon', 302);
     }
 
     // 查缓存
@@ -116,3 +116,4 @@ function json(obj: unknown, status: number): Response {
     headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
   });
 }
+
